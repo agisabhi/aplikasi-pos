@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/kategori', function () {
-    return view('kepalatoko.kategori.index');
-});
+Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/menu', [MenuController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');

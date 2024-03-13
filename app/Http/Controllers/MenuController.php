@@ -12,7 +12,10 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'All Menus',
+        ];
+        return view('kepalatoko.menu.index', $data);
     }
 
     /**

@@ -12,7 +12,10 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Categories',
+        ];
+        return view('kepalatoko.kategori.index', $data);
     }
 
     /**
