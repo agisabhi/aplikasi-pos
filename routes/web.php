@@ -16,7 +16,7 @@ use App\Http\Controllers\KategoriController;
 */
 
 Route::get('/kategori', [KategoriController::class, 'index']);
-Route::get('/menu', [MenuController::class, 'index']);
+Route::resource('/menu', MenuController::class);
 
 Route::get('/', function () {
     return view('welcome');

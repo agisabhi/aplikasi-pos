@@ -146,6 +146,7 @@
               <!-- END Shopping Cart -->
             </div>
             <div class="col-xl-8 order-xl-0">
+              <a class="btn btn-sm btn-success mb-4" href="/menu/create"> <i class="fa fa-plus"></i> Add New Menu</a>
               <!-- Sort and Show Filters -->
               <div class="d-flex justify-content-between">
                 <div class="mb-3">

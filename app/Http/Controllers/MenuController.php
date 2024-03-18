@@ -23,7 +23,11 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => 'Add New Menu',
+        ];
+
+        return view('kepalatoko.menu.create', $data);
     }
 
     /**
