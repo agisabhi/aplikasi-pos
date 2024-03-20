@@ -35,7 +35,23 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_menu' => 'required',
+            'harga' => 'required',
+            'kategori_id' => 'required',
+            'deskripsi' => 'required|min:10|max:150',
+            'foto' => 'required|mimes:img,png,jpg,jpeg|max:2048',
+        ]);
+
+        if ($request->file('foto')) {
+            $file = $request->file('foto');
+            $ext = $file->getClientOriginalExtension();
+            $namafile = 'Menu_' . $validated['nama_menu'];
+            $validated['foto'] = $request->file('foto')->storeAs('/public/foto', $namafile . '.' . $ext);
+        }
+        Menu::create($validated);
+
+        return redirect('/menu')->with('success', 'Success Added New Menu');
     }
 
     /**
