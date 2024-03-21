@@ -1,5 +1,8 @@
 <div>
     <!-- Form Labels on top - Default Style -->
+    @if (session('success'))
+      <span class="text-sm text-success">{{ session('success') }}</span>
+    @endif
                   <form action="" wire:submit="createMenu">
                     @csrf
                     <div class="mb-4">
@@ -42,6 +45,10 @@
                       @error('foto')
                           <span class="text-sm text-danger">{{ $message }}</span>
                       @enderror
+
+                      @if ($foto)
+                        <img width="100%" height="60%" src="{{ $foto->temporaryUrl() }}" alt="">
+                      @endif
                     </div>
                     <div class="mb-4">
                       <button type="submit" id="submit" class="btn btn-primary col-lg-12" onClick="submit()">Submit</button>
