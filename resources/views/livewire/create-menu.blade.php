@@ -33,7 +33,11 @@
                       <label class="form-label" for="example-ltf-password">Category</label>
                       <select wire:model="kategori_id" name="kategori_id" class="form-control" >
                         <option value="" selected>Choose one..</option>
-                        <option value="1">Satu</option>
+                        
+                        @foreach ($kategori as $k)
+                        <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                        @endforeach
+                        
                       </select>
                       @error('kategori_id')
                           <span class="text-sm text-danger">{{ $message }}</span>

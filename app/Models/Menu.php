@@ -9,4 +9,9 @@ class Menu extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class, 'menu_id', 'id');
+    }
 }
