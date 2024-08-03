@@ -3,14 +3,7 @@
         <div class="content">
           <!-- Quick Overview -->
           <div class="row">
-            @if (session('success'))
-                <div class="alert alert-primary alert-dismissible" role="alert">
-                    <p class="mb-0">
-                      This is a primary message with a <a class="alert-link" href="javascript:void(0)">link</a>!
-                    </p>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-            @endif
+            
             <div class="col-6 col-lg-3">
               <a class="block block-rounded text-center" href="javascript:void(0)">
                 <div class="block-content block-content-full">
@@ -87,6 +80,17 @@
                 </div>
               </form>
               <!-- END Search Form -->
+
+              {{-- Alert --}}
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <p class="mb-0">
+                      Success add new Category 
+                    </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            @endif
+              {{-- End Alert --}}
 
               <!-- All Categories Table -->
               <div class="table-responsive">

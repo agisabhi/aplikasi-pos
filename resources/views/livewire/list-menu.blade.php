@@ -54,6 +54,11 @@
                 <div class="block-content">
                   <table class="table table-borderless table-hover table-vcenter">
                     <tbody>
+                      <th>
+                        <td><b>Menu</b></td>
+                        <td><b>Qty</b></td>
+                        <td><b>Price</b></td>
+                      </th>
 
                       @foreach ($carts as $cart)
                         
@@ -66,11 +71,21 @@
                           <div class="fs-sm text-muted">Beautifully crafted icon set</div>
                         </td>
                         <td class="text-end">
-                          <div class="fw-semibold">Rp. {{ number_format($cart->menu->harga) }}</div>
+                          <div class="fw-semibold text-sm">{{$cart->qty }}</div>
+                        </td>
+                        <td class="text-end">
+                          <div class="fw-semibold text-sm">{{ number_format($cart->menu->harga) }}</div>
                         </td>
                       </tr>
                       @endforeach
-                      
+                      <tr class="table-active">
+                        <td class="text-end" colspan="2">
+                          <span class="h4 fw-medium">Total</span>
+                        </td>
+                        <td class="text-end" colspan="2">
+                          <span class="h4 fw-semibold">Rp. {{ number_format($carts->sum('harga')) }}</span>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -88,7 +103,7 @@
               <!-- Sort and Show Filters -->
               <div class="d-flex justify-content-between">
                 <div class="input-group mb-3">
-                  <input type="text" placeholder="Search..." name="search" wire:model="search" class="form-control">
+                  <input type="text" placeholder="Search..." name="search" wire:model.live="search" class="form-control">
                   <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>
                 </div>
                 
@@ -103,7 +118,7 @@
                   <div class="block block-rounded h-100 mb-0">
                     <div class="block-content p-1">
                       <div class="options-container">
-                        <img class="img-fluid options-item" src="{{ asset('storage/'.$menu->foto) }}" alt="">
+                        <img class="img-fluid options-item text-align-center" src="{{ asset('storage/'.$menu->foto) }}" style="height: 150px">
                         <div class="options-overlay bg-black-75">
                           <div class="">
                             

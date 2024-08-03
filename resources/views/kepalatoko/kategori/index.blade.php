@@ -2,9 +2,6 @@
 @section('container')
     
       
-
-
-      
       <!-- Main Container -->
       <main id="main-container">
         @livewire('create-kategori')

@@ -19,9 +19,9 @@ class ListMenu extends Component
         $cek = Cart::where('menu_id', '=', $id)->count();
         if ($cek > 0) {
             $qtyold = Cart::where('menu_id', $id)->first();
-            return dd($qtyold);
+
             Cart::where('menu_id', $id)
-                ->update(['qty' => $qtyold + 1]);
+                ->update(['qty' => ($qtyold->qty + 1)]);
         } else {
             $cart = [
                 'menu_id' => $id,
