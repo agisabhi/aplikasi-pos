@@ -68,7 +68,7 @@
                         </td>
                         <td>
                           <a class="h6" href="be_pages_ecom_store_product.html">{{ $cart->menu->nama_menu }}</a>
-                          <div class="fs-sm text-muted">Beautifully crafted icon set</div>
+                          
                         </td>
                         <td class="text-end">
                           <div class="fw-semibold text-sm">{{$cart->qty }}</div>
@@ -86,15 +86,26 @@
                           <span class="h4 fw-semibold">Rp. {{ number_format($carts->sum('harga')) }}</span>
                         </td>
                       </tr>
+                      <form action="/simpan_antrian" method="POST">
+                        @csrf
+                      <tr class="table-active">
+                        <td class="text-end" colspan="2">
+                          <span class="h4 fw-medium">No Meja</span>
+                        </td>
+                        <td class="text-end" colspan="2">
+                          <input type="text" wire:model="no_meja" name="no_meja" class="form-control" required>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="block-content block-content-full bg-body-light text-end">
-                  <a class="btn btn-primary" href="be_pages_ecom_store_checkout.html">
-                    Checkout
-                    <i class="fa fa-arrow-right opacity-50 ms-1"></i>
-                  </a>
+                  <button wire:click.prevent="createAntrian" class="btn btn-primary" onclick="return confirm('Apakah list menu sudah betul?')">
+                    Tambahkan ke antrian
+                    <i class="fa fa-plus opacity-50 ms-1"></i>
+                  </button>
                 </div>
+              </form>
               </div>
               <!-- END Shopping Cart -->
             </div>
@@ -118,7 +129,9 @@
                   <div class="block block-rounded h-100 mb-0">
                     <div class="block-content p-1">
                       <div class="options-container">
+                        <div class="text-center">
                         <img class="img-fluid options-item text-align-center" src="{{ asset('storage/'.$menu->foto) }}" style="height: 150px">
+                        </div>
                         <div class="options-overlay bg-black-75">
                           <div class="">
                             
@@ -137,14 +150,7 @@
                               <i class="fa fa-pencil text-success text-sm me-1"></i> Edit
                             </a>
                             </div>
-                      <div class="text-warning mt-3">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <span class="text-primary">(480)</span>
-                      </div>
+                      
                       <div class="mb-1">
                         <div class="fw-semibold float-end ms-1">Rp. {{ number_format($menu->harga) }}</div>
                         <a class="h6" href="be_pages_ecom_store_product.html">{{ $menu->nama_menu }}</a>
@@ -156,11 +162,10 @@
                 @endforeach
                 
               </div>
-              <div class="text-end">
-                <a class="btn btn-alt-secondary" href="be_pages_ecom_store_products.html">
-                  Next Page <i class="fa fa-arrow-right ms-1"></i>
-                </a>
-              </div>
+              <div class="text-center">
+                {{ $menus->links() }}
+                </div>
+              
               <!-- END Products -->
             </div>
           </div>

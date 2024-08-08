@@ -12,7 +12,10 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'role' => auth()->user()->role,
+
+        ];
     }
 
     /**
